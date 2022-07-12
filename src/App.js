@@ -2,10 +2,8 @@ import React, {Fragment} from "react";
 import classes from './App.module.css';
 
 const App = () => {
+  return (<div style={{width:'750rem',height:200, backgroundColor:'#bfa'}}>
 
-
-  return (<div>
-    
   </div>);
       
 };
