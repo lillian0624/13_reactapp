@@ -1,44 +1,45 @@
-.Meal{
+.Meal {
     display: flex;
     padding: 30rem 20rem;
     border-bottom: 1px #f2f2f2 solid;
     align-items: center;
 }
 
-.ImgBox{
+.ImgBox {
     width: 260rem;
 }
 
-img{
-   width: 100%;
+img {
+    width: 100%;
 }
 
-.Title{
-font-weight: normal;
- font-size:18px ;
- margin: 0;
+.Title {
+    font-weight: normal;
+    font-size: 18px;
+    margin: 0;
 }
 
-.Desc{
-    color: #999; 
+.Desc {
+    color: #999;
     margin: 0;
     font-size: 13px;
     padding-right: 30rem;
     /* background-color: brown; */
 }
 
-.PriceWrap{
+.PriceWrap {
     margin-top: 30rem;
     display: flex;
+    padding-right: 30rem;
     justify-content: space-between;
 }
 
-.Price{
+.Price {
     font-weight: bold;
     font-size: 20px;
 }
 
-.Price::before{
+.Price::before {
     content: '$';
-    font-size:13px;
+    font-size: 13px;
 }
