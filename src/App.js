@@ -1,6 +1,9 @@
 import React, { Fragment, useState } from "react";
 import classes from "./App.module.css";
 import Meals from "./components/Meals/Meals";
+import A from "./components/A";
+import TestContext from "./store/testContext";
+import B from "./components/A";
 
 const Meals_Data = [
   {
@@ -92,13 +95,20 @@ const App = () => {
   };
 
   return (
-    <div>
-      <Meals
-        MealsData={MealsData}
-        onAdd={addMealHandler}
-        onSub={subMealHandler}
-      />
-    </div>
+    <TestContext.Provider value={{ name: "xx", age: 28 }}>
+      <div>
+        <A />
+        <TestContext.Provider value={{ name: "ww", age: 20 }}>
+          <B />
+        </TestContext.Provider>
+
+        <Meals
+          MealsData={MealsData}
+          onAdd={addMealHandler}
+          onSub={subMealHandler}
+        />
+      </div>
+    </TestContext.Provider>
   );
 };
 
