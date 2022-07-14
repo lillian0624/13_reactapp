@@ -6,7 +6,12 @@ const Meals = (props) => {
   return (
     <div className={classes.Meals}>
       {props.MealsData.map((item) => (
-        <Meal key={item.id} meal={item} />
+        <Meal
+          key={item.id}
+          meal={item}
+          onAdd={props.onAdd}
+          onSub={props.onSub}
+        />
       ))}
     </div>
   );
