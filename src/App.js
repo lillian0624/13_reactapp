@@ -3,6 +3,7 @@ import classes from "./App.module.css";
 import Meals from "./components/Meals/Meals";
 import FilterMeals from "./FilterMeals/FilterMeals";
 import CartContext from "./store/Cart-context";
+import Cart from "./components/Cart/Cart";
 
 const Meals_Data = [
   {
@@ -105,6 +106,7 @@ const App = () => {
       <div>
         <FilterMeals onFilter={filterhandler} />
         <Meals MealsData={MealsData} />
+        <Cart />
       </div>
     </CartContext.Provider>
   );
