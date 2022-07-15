@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import classes from "./App.module.css";
 import Meals from "./components/Meals/Meals";
+import FilterMeals from "./FilterMeals/FilterMeals";
 import CartContext from "./store/Cart-context";
 
 const Meals_Data = [
@@ -64,6 +65,13 @@ const App = () => {
     totalPrice: 0,
   });
 
+  const filterhandler = (keyword) => {
+    const newMealsData = Meals_Data.filter(
+      (item) => item.title.indexOf(keyword) !== -1
+    );
+    setMealsData(newMealsData);
+  };
+
   const addItem = (meal) => {
     const newCart = { ...cartData };
     if (newCart.items.indexOf(meal) === -1) {
@@ -93,10 +101,10 @@ const App = () => {
   };
 
   return (
-    <CartContext.Provider value={{...cartData, addItem, removeItem}}>
+    <CartContext.Provider value={{ ...cartData, addItem, removeItem }}>
       <div>
-        <Meals
-          MealsData={MealsData} />
+        <FilterMeals onFilter={filterhandler} />
+        <Meals MealsData={MealsData} />
       </div>
     </CartContext.Provider>
   );
