@@ -12,11 +12,11 @@
     /* line-height: 20rem; */
     border: none;
     background-color: #FCBF49;
-    width: 16rem;
-    height: 16rem;
+    width: 40rem;
+    height: 40rem;
 
     border-radius: 50%;
-    font-size: 15px;
+    font-size: 30rem;
     padding: 0%;
 }
 
@@ -26,6 +26,6 @@
 }
 
 .count {
-    font-size: 18px;
+    font-size: 36rem;
     margin: 0 5px;
 }

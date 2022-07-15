@@ -15,14 +15,14 @@ img {
 
 .Title {
     font-weight: normal;
-    font-size: 18px;
+    font-size: 36rem;
     margin: 0;
 }
 
 .Desc {
     color: #999;
     margin: 0;
-    font-size: 13px;
+    font-size: 26rem;
     padding-right: 30rem;
     /* background-color: brown; */
 }
@@ -36,10 +36,10 @@ img {
 
 .Price {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 40rem;
 }
 
 .Price::before {
     content: '$';
-    font-size: 13px;
+    font-size: 26rem;
 }
