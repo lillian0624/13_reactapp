@@ -1,14 +1,19 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import classes from "./Counter.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import CartContext from "../../../../../store/Cart-context";
 
 const Counter = (props) => {
+
+const ctx = useContext(CartContext);
+ 
   const addButtonHandler = () => {
-    props.onAdd(props.meal);
+    ctx.addItem(props.meal);
+    
   };
   const subButtonHandler = () => {
-    props.onSub(props.meal);
+    ctx.removeItem(props.meal); 
   };
 
   return (

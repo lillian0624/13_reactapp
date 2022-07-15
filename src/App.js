@@ -1,9 +1,7 @@
 import React, { Fragment, useState } from "react";
 import classes from "./App.module.css";
 import Meals from "./components/Meals/Meals";
-import A from "./components/A";
-import TestContext from "./store/testContext";
-import B from "./components/A";
+import CartContext from "./store/Cart-context";
 
 const Meals_Data = [
   {
@@ -66,7 +64,7 @@ const App = () => {
     totalPrice: 0,
   });
 
-  const addMealHandler = (meal) => {
+  const addItem = (meal) => {
     const newCart = { ...cartData };
     if (newCart.items.indexOf(meal) === -1) {
       newCart.items.push(meal);
@@ -81,7 +79,7 @@ const App = () => {
     setCartData(newCart);
   };
 
-  const subMealHandler = (meal) => {
+  const removeItem = (meal) => {
     const newCart = { ...cartData };
 
     meal.amount -= 1;
@@ -95,20 +93,12 @@ const App = () => {
   };
 
   return (
-    <TestContext.Provider value={{ name: "xx", age: 28 }}>
+    <CartContext.Provider value={{...cartData, addItem, removeItem}}>
       <div>
-        <A />
-        <TestContext.Provider value={{ name: "ww", age: 20 }}>
-          <B />
-        </TestContext.Provider>
-
         <Meals
-          MealsData={MealsData}
-          onAdd={addMealHandler}
-          onSub={subMealHandler}
-        />
+          MealsData={MealsData} />
       </div>
-    </TestContext.Provider>
+    </CartContext.Provider>
   );
 };
 

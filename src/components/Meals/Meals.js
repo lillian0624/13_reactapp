@@ -9,8 +9,7 @@ const Meals = (props) => {
         <Meal
           key={item.id}
           meal={item}
-          onAdd={props.onAdd}
-          onSub={props.onSub}
+          
         />
       ))}
     </div>
