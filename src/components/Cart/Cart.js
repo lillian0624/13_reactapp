@@ -10,11 +10,23 @@ const Cart = () => {
     <div className={classes.Cart}>
       <div className={classes.Icon}>
         <img src={iconImg} />
-        <span className={classes.TotalAmount}>{ctx.totalAmount}</span>
+        {ctx.totalAmount === 0 ? null : (
+          <span className={classes.TotalAmount}>{ctx.totalAmount}</span>
+        )}
       </div>
+      {ctx.totalAmount === 0 ? (
+        <p className={classes.NoMeal}>Add your first item</p>
+      ) : (
+        <p className={classes.Price}>{ctx.totalPrice}</p>
+      )}
 
-      <p className={classes.Price}>{ctx.totalPrice}</p>
-      <button className={classes.Button}>Confirm</button>
+      <button
+        className={`${classes.Button} ${
+          ctx.totalAmount === 0 ? classes.Disabled : ""
+        }`}
+      >
+        Confirm
+      </button>
     </div>
   );
 };

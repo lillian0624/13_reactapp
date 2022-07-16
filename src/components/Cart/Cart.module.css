@@ -36,13 +36,18 @@
     right: -12rem;
 }
 
-.Price {
+.Price,
+.NoMeal {
     display: flex;
     align-items: center;
     margin-left: 120rem;
     font-size: 36rem;
     font-weight: bold;
     color: rgb(255, 255, 255);
+}
+
+.NoMeal {
+    color: #aaa;
 }
 
 .Price::before {
@@ -56,4 +61,9 @@
     width: 160rem;
     border-radius: 60rem;
     font-size: 30rem;
+}
+
+.Disabled {
+    background-color: #666;
+    color: #ccc;
 }
