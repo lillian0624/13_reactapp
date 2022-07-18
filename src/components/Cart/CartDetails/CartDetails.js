@@ -29,10 +29,11 @@ const CartDetails = () => {
      };
 
     return (
-       <Backdrop>
+       <Backdrop onClick = {CancelHandler}>
+
         {showConfirm && <Confirm 
         onCancel = {CancelHandler}
-        onOK ={OkHandler}
+        onOk ={OkHandler}
         ConfirmText = {'Confirm to clear the cart?'}/>};
 
         <div className={classes.CartDetails}
@@ -44,7 +45,7 @@ const CartDetails = () => {
                 onClick={showConfirmHandler}
                 className={classes.Clear}>
                     <FontAwesomeIcon icon={faTrash}/>
-                    {/* <FontAwesomeIcon icon="fa-solid fa-trash-can" /> */}
+                    
                     <span>Clear Cart</span>
                 </div>  
             </header>  
