@@ -12,7 +12,9 @@ const CartDetails = () => {
 
     return (
        <Backdrop>
-        <div className={classes.CartDetails}>
+        <div className={classes.CartDetails}
+        onClick = {e=> e.stopPropagation()}
+        >
             <header className={classes.Header}>
                 <h2 className={classes.Title}>Details</h2>  
                 <div className={classes.Clear}>
