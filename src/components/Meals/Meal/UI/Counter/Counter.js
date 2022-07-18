@@ -2,7 +2,7 @@ import React, { Fragment, useContext } from "react";
 import classes from "./Counter.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-import CartContext from "../../../../../store/Cart-context";
+import CartContext from "../../../../../store/CartContext";
 
 const Counter = (props) => {
 

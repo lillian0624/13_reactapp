@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 // import classes from "./App.module.css";
 import Meals from "./components/Meals/Meals";
 import FilterMeals from "./FilterMeals/FilterMeals";
-import CartContext from "./store/Cart-context";
+import CartContext from "./store/CartContext";
 import Cart from "./components/Cart/Cart";
 // import Backdrop from "./components/UI/Backdrop/Backdrop";
 
@@ -108,7 +108,7 @@ const App = () => {
         <FilterMeals onFilter={filterhandler} />
         <Meals MealsData={MealsData} />
         <Cart />
-        {/* <Backdrop /> */}
+        
       </div>
     </CartContext.Provider>
   );
