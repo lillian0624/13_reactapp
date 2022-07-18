@@ -4,6 +4,7 @@ import Meals from "./components/Meals/Meals";
 import FilterMeals from "./FilterMeals/FilterMeals";
 import CartContext from "./store/CartContext";
 import Cart from "./components/Cart/Cart";
+
 // import Backdrop from "./components/UI/Backdrop/Backdrop";
 
 const Meals_Data = [
@@ -102,8 +103,20 @@ const App = () => {
     setCartData(newCart);
   };
 
+  const clearCart = () => {
+
+    const newCart = {...cartData};
+    // 将购物车中商品的数量清0
+    newCart.items.forEach(item => delete item.amount);
+    newCart.items = [];
+    newCart.totalAmount = 0;
+    newCart.totalPrice = 0;
+
+    setCartData(newCart);
+};
+
   return (
-    <CartContext.Provider value={{ ...cartData, addItem, removeItem }}>
+    <CartContext.Provider value={{ ...cartData, addItem, removeItem, clearCart }}>
       <div>
         <FilterMeals onFilter={filterhandler} />
         <Meals MealsData={MealsData} />
@@ -111,7 +124,7 @@ const App = () => {
         
       </div>
     </CartContext.Provider>
-  );
+  ); 
 };
 
 export default App;

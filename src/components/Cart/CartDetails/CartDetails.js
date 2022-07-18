@@ -1,23 +1,48 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import classes from './CartDetails.module.css'
 import CartContext from '../../../store/CartContext';
 import Meal  from '../../Meals/Meal/Meal';
+import Confirm from '../../Meals/Meal/UI/Confirm/Confirm';
 
 const CartDetails = () => {
 
     const ctx = useContext(CartContext);
 
+    //设置state来控制确认框的显示
+    const [showConfirm, setShowConfirm] = useState(false);
+
+    const showConfirmHandler = () =>{ 
+        setShowConfirm(true);
+     };
+
+     const CancelHandler=(e)=>{
+        e.stopPropagation();
+       setShowConfirm(false); 
+     };
+
+     const OkHandler =()=>{
+        //clear cart
+        ctx.clearCart();
+     };
+
     return (
        <Backdrop>
+        {showConfirm && <Confirm 
+        onCancel = {CancelHandler}
+        onOK ={OkHandler}
+        ConfirmText = {'Confirm to clear the cart?'}/>};
+
         <div className={classes.CartDetails}
         onClick = {e=> e.stopPropagation()}
         >
             <header className={classes.Header}>
                 <h2 className={classes.Title}>Details</h2>  
-                <div className={classes.Clear}>
+                <div 
+                onClick={showConfirmHandler}
+                className={classes.Clear}>
                     <FontAwesomeIcon icon={faTrash}/>
                     {/* <FontAwesomeIcon icon="fa-solid fa-trash-can" /> */}
                     <span>Clear Cart</span>

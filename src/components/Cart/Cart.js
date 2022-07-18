@@ -20,7 +20,7 @@ const toggleDetailsHandler = () => {
     <div className={classes.Cart} onClick = {toggleDetailsHandler} > 
       {showDetails && <CartDetails/>}
       <div className={classes.Icon}>
-        <img src={iconImg} />
+        <img src={iconImg}/>
         {ctx.totalAmount === 0 ? null : (
           <span className={classes.TotalAmount}>{ctx.totalAmount}</span>
         )}
