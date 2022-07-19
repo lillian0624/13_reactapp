@@ -3,7 +3,9 @@ import Backdrop from '../../../../UI/Backdrop/Backdrop';
 import classes from './Confirm.module.css';
 const Confirm = (props) => {
     return (
-       <Backdrop className={classes.ConfirmOuter}>
+       <Backdrop 
+       onClick = {props.onCancel}
+       className={classes.ConfirmOuter}>
         <div className={classes.Confirm}>
             <p className={classes.ConfirmText}>{props.ConfirmText}</p>
             <div>

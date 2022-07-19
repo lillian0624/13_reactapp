@@ -19,7 +19,7 @@ const CartDetails = () => {
      };
 
      const CancelHandler=(e)=>{
-        e.stopPropagation();
+        e.stopPropagation();//取消冒泡
        setShowConfirm(false); 
      };
 
@@ -29,7 +29,7 @@ const CartDetails = () => {
      };
 
     return (
-       <Backdrop onClick = {CancelHandler}>
+       <Backdrop >
 
         {showConfirm && <Confirm 
         onCancel = {CancelHandler}
