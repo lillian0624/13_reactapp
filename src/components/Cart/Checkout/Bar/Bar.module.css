@@ -1,0 +1,36 @@
+.Bar{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 700rem;
+    height: 80rem;
+    background-color: #333;
+    border-radius: 60px;
+    bottom: 10rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 9999;
+}
+
+.Button {
+    border: none;
+    background-color: #FCBF49;
+    width: 160rem;
+    border-radius: 60rem;
+    font-size: 30rem;
+}
+
+.TotalPrice{
+    display: flex;
+    align-items: center;
+    margin-left: 60rem;
+    font-size: 36rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
+.TotalPrice::before {
+    content: '$';
+    font-size: 24rem;
+}
