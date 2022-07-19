@@ -1,10 +1,20 @@
 import React from 'react';
 import classes from './CheckoutItem.module.css';
+import Counter from '../../../Meals/Meal/UI/Counter/Counter';
 
-const CheckoutItem = () => {
+const CheckoutItem = (props) => {
     return (
-        <div>
-            
+        <div className={classes.CheckoutItem}>
+            <div className={classes.MealImg}>
+                <img src={props.meal.img}/>
+            </div>
+            <div className={classes.Desc}>
+                <h2 className={classes.Title}>{props.meal.title}</h2>
+                <div className={classes.PriceOuter}>
+                    <div ><Counter meal = {props.meal}/></div>
+                    <div className={classes.Price}>{props.meal.price * props.meal.amount}</div>
+                </div>
+            </div>
         </div>
     );
 };

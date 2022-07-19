@@ -62,3 +62,9 @@
     font-size: 16rem;
     margin-right: 10rem;
 }
+
+.Meals{
+   
+    max-height: 900rem;
+    overflow: auto;
+}
