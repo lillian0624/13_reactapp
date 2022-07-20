@@ -18,7 +18,7 @@ const Cart = () => {
       setShowDetails(false);
       setShowCheckout(false);
     }
-  });
+  }, [ctx, setShowDetails, setShowCheckout]);
 
   //添加一个显示详情页的函数
   const toggleDetailsHandler = () => {
