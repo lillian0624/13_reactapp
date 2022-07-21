@@ -104,27 +104,27 @@ const App = () => {
   };
 
   const clearCart = () => {
-
-    const newCart = {...cartData};
+    const newCart = { ...cartData };
     // 将购物车中商品的数量清0
-    newCart.items.forEach(item => delete item.amount);
+    newCart.items.forEach((item) => delete item.amount);
     newCart.items = [];
     newCart.totalAmount = 0;
     newCart.totalPrice = 0;
 
     setCartData(newCart);
-};
+  };
 
   return (
-    <CartContext.Provider value={{ ...cartData, addItem, removeItem, clearCart }}>
+    <CartContext.Provider
+      value={{ ...cartData, addItem, removeItem, clearCart }}
+    >
       <div>
         <FilterMeals onFilter={filterhandler} />
         <Meals MealsData={MealsData} />
         <Cart />
-        
       </div>
     </CartContext.Provider>
-  ); 
+  );
 };
 
 export default App;
