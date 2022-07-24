@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useReducer, useState } from "react";
 // import classes from "./App.module.css";
 import Meals from "./components/Meals/Meals";
 import FilterMeals from "./FilterMeals/FilterMeals";
@@ -59,10 +59,44 @@ const Meals_Data = [
   },
 ];
 
+//define reducer
+const cartReducer = (state, action) => {
+  //Cope the CartData
+  const newCart = { ...state };
+
+  switch (action.type) {
+    default:
+      return state;
+    case "ADD":
+      if (newCart.items.indexOf(action.meal) === -1) {
+        newCart.items.push(action.meal);
+        action.meal.amount = 1;
+      } else {
+        action.meal.amount += 1;
+      }
+      newCart.totalAmount += 1;
+      newCart.totalPrice += action.meal.price;
+      return newCart;
+    case "REMOVE":
+      action.meal.amount -= 1;
+      if (action.meal.amount === 0) {
+        newCart.items.splice(newCart.items.indexOf(action.meal), 1);
+      }
+      newCart.totalAmount -= 1;
+      newCart.totalPrice -= action.meal.price;
+      return newCart;
+    case "CLEAR":
+      newCart.items.forEach((item) => delete item.amount);
+      newCart.items = [];
+      newCart.totalAmount = 0;
+      newCart.totalPrice = 0;
+      return newCart;
+  }
+};
+
 const App = () => {
   const [MealsData, setMealsData] = useState(Meals_Data);
-
-  const [cartData, setCartData] = useState({
+  const [cartData, cartDispatch] = useReducer(cartReducer, {
     items: [],
     totalAmount: 0,
     totalPrice: 0,
@@ -75,49 +109,8 @@ const App = () => {
     setMealsData(newMealsData);
   };
 
-  const addItem = (meal) => {
-    const newCart = { ...cartData };
-    if (newCart.items.indexOf(meal) === -1) {
-      newCart.items.push(meal);
-      meal.amount = 1;
-    } else {
-      meal.amount += 1;
-    }
-
-    newCart.totalAmount += 1;
-    newCart.totalPrice += meal.price;
-
-    setCartData(newCart);
-  };
-
-  const removeItem = (meal) => {
-    const newCart = { ...cartData };
-
-    meal.amount -= 1;
-
-    if (meal.amount === 0) {
-      newCart.items.splice(newCart.items.indexOf(meal), 1);
-    }
-    newCart.totalAmount -= 1;
-    newCart.totalPrice -= meal.price;
-    setCartData(newCart);
-  };
-
-  const clearCart = () => {
-    const newCart = { ...cartData };
-    // 将购物车中商品的数量清0
-    newCart.items.forEach((item) => delete item.amount);
-    newCart.items = [];
-    newCart.totalAmount = 0;
-    newCart.totalPrice = 0;
-
-    setCartData(newCart);
-  };
-
   return (
-    <CartContext.Provider
-      value={{ ...cartData, addItem, removeItem, clearCart }}
-    >
+    <CartContext.Provider value={{ ...cartData, cartDispatch }}>
       <div>
         <FilterMeals onFilter={filterhandler} />
         <Meals MealsData={MealsData} />

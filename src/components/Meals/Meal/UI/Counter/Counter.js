@@ -5,15 +5,15 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import CartContext from "../../../../../store/CartContext";
 
 const Counter = (props) => {
+  const ctx = useContext(CartContext);
 
-const ctx = useContext(CartContext);
- 
   const addButtonHandler = () => {
-    ctx.addItem(props.meal);
-    
+    //ctx.addItem(props.meal);
+    ctx.cartDispatch({ type: "ADD", meal: props.meal });
   };
   const subButtonHandler = () => {
-    ctx.removeItem(props.meal); 
+    //ctx.removeItem(props.meal);
+    ctx.cartDispatch({ type: "REMOVE", meal: props.meal });
   };
 
   return (
